@@ -1,0 +1,15 @@
+<div class="panel">
+  <div class="panel-body" >
+    <%= form_for @user do |f| %>
+      <label>First Name </label>
+      <%= f.text_field :first_name %>
+      <br>
+      <%= f.text_field :last_name %>
+      <%= f.number_field :age %>
+      <%= f.text_field :gender %>
+      <%= f.file_field :profile_image %>
+      <%= f.file_field :license_image %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
