@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+
+  before_action :load_data , only: [:index]
+
   def new
     @user = User.new
   end
@@ -25,17 +28,20 @@ class UsersController < ApplicationController
     @user[:license_image_url] = temp["url"]
 
     if @user.save!
-      render 'index'
+      redirect_to '/users'
     end
   end
 
   def verify
-    @user =  User.last
-    @result = @user.verify_image
+    #@user =  User.last
+    #@result = @user.verify_image
   end
 
   def user_params
     params.require(:user).permit(:first_name,:last_name,:age,:gender)
   end
 
+  def load_data
+    @user = User.last
+  end
 end

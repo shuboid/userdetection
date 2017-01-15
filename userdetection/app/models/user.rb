@@ -15,7 +15,6 @@ field :result ,type: Hash, default: {}
 
   def get_data
     self.result = self.verify_image
-    byebug
   end
 
 

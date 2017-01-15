@@ -3,7 +3,7 @@
   <div class="col-lg-6">
     <%= image_tag @user.profile_image_url , height: '300', width: '200' %>
   </div>
-
+  <%- count=0 %>
   <div class="col-lg-6">
       <%= image_tag @user.license_image_url , height: '300', width: '400' %>
   </div>
@@ -81,16 +81,29 @@
         <tr>
           <td> Result </td>
           <%- temp = (@user.first_name + " "+@user.last_name).upcase %>
-          <%-#  if @user.result["name_on_license"][0].include? temp %>
+          <%- if @user.result["name_on_license"][0].include? temp %>
              <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
-            <%-# else %>
+            <%-else %>
             <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
-            <%-# end %>
+            <%-end %>
             <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
 
         </tr>
       </tbody>
     </table>
   </div>
+ </div>
+
+ <div>
+    <div>
+      <h1 class="text-success"> No Criminal Records </h1>
+    </div>
+    <div class="btn btn-success">
+        Accept
+    </div>
+    <div class ="btn btn-danger">
+        Reject
+    </div>
+
  </div>
 
