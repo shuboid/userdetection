@@ -32,19 +32,23 @@
         </tr>
         <tr>
           <td> Result </td>
-          <%- if  @user.age.to_i <= @user.result["age"].to_i + 5 || @user.age.to_i >= @user.result["age"].to_i - 5  %>
-          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
-          <%- else %>
-          <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
-          <%- end %>
+           <%- if @user.result["valid_profile_image"] == true %>
+            <%- if  @user.age.to_i <= @user.result["age"].to_i + 5 && @user.age.to_i >= @user.result["age"].to_i - 5  %>
+            <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+            <%- else %>
+            <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
+            <%- end %>
 
-           <%- if  @user.gender == @user.result["gender"] %>
-          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
-          <%- else %>
-          <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
-          <%- end %>
+             <%- if  @user.gender == @user.result["gender"] %>
+            <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+            <%- else %>
+            <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
+            <%- end %>
 
-          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+            <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+            <%- else %>
+              <td class="text-danger"> Invalid Image: No face found</td>
+            <%- end %>
 
           </tr>
       </tbody>
@@ -76,9 +80,14 @@
         </tr>
         <tr>
           <td> Result </td>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
+          <%- temp = (@user.first_name + " "+@user.last_name).upcase %>
+          <%-#  if @user.result["name_on_license"][0].include? temp %>
+             <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+            <%-# else %>
+            <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
+            <%-# end %>
+            <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+
         </tr>
       </tbody>
     </table>
