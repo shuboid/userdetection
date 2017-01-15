@@ -7,11 +7,12 @@ class UsersController < ApplicationController
 
 
   def index
+    @user =  User.last
+    @result = @user.verify_image
   end
+
   def create
     @user = User.new(user_params)
-    byebug
-
     auth = {
     cloud_name: "shuboid-cloud",
     api_key: "955113512438869",
@@ -28,6 +29,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def verify
+    @user =  User.last
+    @result = @user.verify_image
+  end
 
   def user_params
     params.require(:user).permit(:first_name,:last_name,:age,:gender)

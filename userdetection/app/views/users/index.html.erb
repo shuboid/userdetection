@@ -1,3 +1,87 @@
-<div>
-  Hello
-</div>
+
+<div class="col-lg-10">
+  <div class="col-lg-6">
+    <%= image_tag @user.profile_image_url , height: '300', width: '200' %>
+  </div>
+
+  <div class="col-lg-6">
+      <%= image_tag @user.license_image_url , height: '300', width: '400' %>
+  </div>
+  <div class="container col-lg-6 clear">
+    <table class="table col-lg-4 clear">
+      <thead>
+        <tr>
+          <th> Type </th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Race</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> User Info </td>
+          <td><%= @user.age %></td>
+          <td><%= @user.gender %></td>
+          <td>---- </td>
+       </tr>
+        <tr>
+          <td>Recognition data</td>
+          <td> <%= @user.result["age"] %></td>
+          <td> <%= @user.result["gender"] %></td>
+          <td> <%= @user.result["race"] %></td>
+        </tr>
+        <tr>
+          <td> Result </td>
+          <%- if  @user.age.to_i <= @user.result["age"].to_i + 5 || @user.age.to_i >= @user.result["age"].to_i - 5  %>
+          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+          <%- else %>
+          <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
+          <%- end %>
+
+           <%- if  @user.gender == @user.result["gender"] %>
+          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+          <%- else %>
+          <td><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></td>
+          <%- end %>
+
+          <td><span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span></td>
+
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container col-lg-6 clear">
+    <table class="table col-lg-4 clear">
+      <thead>
+        <tr>
+          <th> Type </th>
+          <th>Name</th>
+          <th>Dob</th>
+          <th>Validity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> User Info </td>
+          <td><%= @user.first_name %><%= @user.last_name %></td>
+          <td>---</td>
+          <td> --- </td>
+       </tr>
+        <tr>
+          <td>Recognition data</td>
+          <td><%= @user.result["name_on_license"]%></td>
+          <td><%= @user.result["dob_on_license"]%></td>
+          <td><%= @user.result["license_validity"]%></td>
+        </tr>
+        <tr>
+          <td> Result </td>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@example.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>
+
