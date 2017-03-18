@@ -17,9 +17,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     auth = {
-    cloud_name: "shuboid-cloud",
-    api_key: "955113512438869",
-    api_secret:"2LNTfxCktq1T78v6UN-na7eqWZc"
+    cloud_name: "#",
+    api_key: "#",
+    api_secret:"#"
     }
     temp = Cloudinary::Uploader.upload(params[:user][:profile_image].tempfile, auth)
     @user[:profile_image_url] = temp["url"]
